@@ -1,0 +1,126 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    background: wheat;
+}
+
+.mdl-layout__content {
+
+    background: white;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.movie-content {
+    margin: 16px;
+    display: flex;
+}
+
+.movie-image {
+    float: left;
+}
+
+.movie-info {
+    clear: right;
+    margin-left: 32px;
+}
+
+.movie-title {
+    float: left;
+}
+
+.movie-ratings {
+    float: right;
+}
+
+.content {
+    clear: both;
+}
+
+.total-ratings {
+
+}
+
+.sub-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.separator {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.imdb-img {
+    margin-left: 4px;
+}
+
+.meta-score {
+    margin-left: 64px;
+    margin-right: 4px;
+    height: 32px;
+    width: 32px;
+    background: green;
+    text-align: center;
+    line-height: 32px;
+    vertical-align: middle;
+    font-size: 16px;
+    padding: 8px;
+    color: white;
+}
+
+.movie-director {
+    margin-top: 32px;
+}
+
+.director-heading {
+    color: grey;
+    font-size: 16px;
+}
+
+.movie-cast {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.details {
+    clear: both;
+}
+
+.comment-section {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.user-comment-list {
+    margin-left: 32px;
+    margin-right: 32px;
+    background: lightyellow;
+}
+
+.current-user_comment-box {
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.comment-box {
+    border-color: #009688;
+}
+
+.comment::placeholder {
+    padding-top: 8px;
+    padding-left: 8px;
+}
+
+.comment-button {
+    margin: 16px;
+    float: right;
+}
+
+.login-message {
+    margin-top: 16px;
+    font-family: "Comic Sans MS";
+}

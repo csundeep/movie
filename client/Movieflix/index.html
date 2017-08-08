@@ -1,0 +1,83 @@
+<html ng-app="movieflix">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular-cookies.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="js/mdDateTimePicker.js"></script>
+    <script src="js/mdl-selectfield.js"></script>
+
+
+    <script src="js/services/userService.js"></script>
+    <script src="js/services/homeService.js"></script>
+    <script src="js/services/addMovieService.js"></script>
+    <script src="js/services/editMovieService.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="js/controllers/homeController.js"></script>
+    <script src="js/controllers/addMovieController.js"></script>
+    <script src="js/controllers/editMovieController.js"></script>
+    <script src="js/controllers/movieDetailController.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/app.js"></script>
+
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link href="css/movieflix.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/movieDetail.css" rel="stylesheet">
+
+    <link href="css/addmovie.css" rel="stylesheet">
+    <link href="css/mdDateTimePicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mdl-selectfield.css">
+    <!--<link href="css/validation.css" rel="stylesheet"/>-->
+</head>
+<body>
+
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="custom-header  mdl-shadow--8dp">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">MovieFlix</span>
+
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+
+            <p ng-hide="loginPage" class="welcome-text">Welcome, <span>{{uName}}</span><span
+                    ng-hide="uName">guest</span></p>
+            <button ng-hide="loginPage"
+                    class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <div ng-show="uName">
+                    <a href="#/login">
+                        <li class="mdl-menu__item">Logout</li>
+                    </a>
+                </div>
+                <div ng-hide="uName">
+                    <a href="#/login">
+                        <li class="mdl-menu__item">Login as User</li>
+                    </a>
+                    <a href="#/loginAdmin">
+                        <li class="mdl-menu__item">Login as Admin</li>
+                    </a>
+                </div>
+            </ul>
+        </div>
+    </header>
+    <main class="mdl-layout__content mdl-shadow--8dp">
+
+        <div ng-view=""></div>
+
+
+    </main>
+</div>
+
+</body>
+</html>

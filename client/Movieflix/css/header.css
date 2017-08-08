@@ -1,0 +1,40 @@
+
+header.custom-header {
+    background: #111;
+    margin-left: 150px;
+    margin-right: 150px;
+
+}
+
+.mdl-layout__header-row span.mdl-layout-title {
+    color: #ffb648;
+    text-transform: uppercase;
+}
+
+.custom-header .material-icons {
+    color: #fff;
+}
+
+.welcome-text {
+    color: white;
+    margin-top: 16px;
+    font-size: 18px;
+}
+
+.custom-header a.mdl-navigation__link {
+    color: #eee;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.custom-header a.mdl-navigation__link:hover {
+    color: #fff;
+}
+
+.mdl-layout__header-row {
+    padding-left: 20px;
+}
+
+
+
+

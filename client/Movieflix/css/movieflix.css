@@ -1,0 +1,115 @@
+
+body {
+    background: wheat;
+}
+
+.search_bar {
+
+}
+
+.search_box {
+    background: #ffb648;
+}
+
+.select_box {
+    height: 27px;
+    background: #ffb648;
+}
+
+.search_box_main {
+    margin-top: 16px;
+    margin-left: 72px;
+}
+
+.mdl-layout__content {
+
+    background: white;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.add-movie-button {
+    position: fixed;
+    z-index: 99;
+    bottom: 32px;
+    right: 32px;
+}
+
+.sort-by-button-section {
+    height: 64px;
+}
+
+.sort-by-button {
+    margin: 16px;
+    float: right;
+}
+
+.movie-card {
+    margin: 16px;
+}
+
+.demo-card-square.mdl-card {
+    margin-left: 48px;
+    margin-right: 32px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 170px;
+    height: 420px;
+    float: left;
+}
+
+.movie-card-title {
+    color: #fff;
+    height: 200px;
+    font-size: 46px;
+}
+
+.movie-details {
+    padding: 2px;
+}
+
+.movie-list {
+    padding: 0px;
+}
+
+.movie-item {
+    font-size: 10px;
+    padding: 0px;
+    margin-left: 4px;
+    min-height: 32px;
+}
+
+.mdl-list__item-icon, .mdl-list__item-icon.material-icons {
+    width: 0px;
+
+}
+
+.rating-star {
+    margin-right: 16px;
+    margin-left: 4px;
+}
+
+.login-form {
+    margin-top: 156px;
+    margin-right: 356px;
+    margin-left: 356px;
+}
+
+.login-tabs {
+}
+
+.material-icons.md-18 {
+    font-size: 8px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
