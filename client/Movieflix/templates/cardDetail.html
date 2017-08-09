@@ -1,3 +1,56 @@
+<style>
+    .row {
+        text-align: center;
+    }
+
+    .rate {
+        display: inline-block;
+        margin-top: 16px;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        float: right;
+        font-size: 0;
+        color: #d9d9d9;
+    }
+
+    label:before {
+        content: "\f005";
+        font-family: FontAwesome;
+        font-size: 28px;
+    }
+
+    label:hover,
+    label:hover ~ label {
+        color: #fcd000;
+        transition: 0.2s;
+    }
+
+    input:checked ~ label {
+        color: #ccac00;
+    }
+
+    input:checked ~ label:hover,
+    input:checked ~ label:hover ~ label {
+        color: #fcd000;
+        transition: 0.2s;
+    }
+
+    .star-half {
+        position: relative;
+    }
+
+    .star-half:before {
+        position: absolute;
+        content: "\f089";
+        padding-right: 0;
+    }
+
+</style>
 <div class="movie-content">
     <div class="movie-image">
         <img width="200" height="300" src="{{movieDetailCtrl.movie.moviePoster}}">
@@ -10,18 +63,72 @@
                 <span class="separator">|</span>
                 <span ng-repeat="genre in movieDetailCtrl.movie.genre">{{genre.genereType}} </span>
                 <span class="separator">|</span>
-                <span>{{movieDetailCtrl.movie.releaseDate}} </span>
+                <span>{{movieDetailCtrl.movie.releaseDate}}</span>
             </div>
         </div>
         <div class="movie-ratings">
-                    <span class="total-ratings">
-                          <span class="material-icons mdl-list__item-icon"
-                                style="font-size: 64px; margin-right: 48px;color:gold"> star</span>
-                    </span>
-            <!--<span class="separator">|</span>-->
-            <!--<span class="your-rating">-->
-            <!--<span class="material-icons mdl-list__item-icon"> star</span>-->
-            <!--</span>-->
+                     <span class="your-rating">
+                              <fieldset class="rate">
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star5" type="radio" name="rate2" value="5"/>
+                                <label for="rate2-star5" title="Awesome">5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star5-half" type="radio" name="rate2" value="4.5"/>
+                                <label class="star-half" for="rate2-star5-half" title="Excellent">4.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star4" type="radio" name="rate2" value="4"/>
+                                <label for="rate2-star4" title="Very good">4</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star3-half" type="radio" name="rate2" value="3.5"/>
+                                <label class="star-half" for="rate2-star3-half" title="Good">3.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star3" type="radio" name="rate2" value="3"/>
+                                <label for="rate2-star3" title="Satisfactory">3</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star2-half" type="radio" name="rate2" value="2.5"/>
+                                <label class="star-half" for="rate2-star2-half" title="Unsatisfactory">2.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star2" type="radio" name="rate2" value="2"/>
+                                <label for="rate2-star2" title="Bad">2</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star1-half" type="radio" name="rate2" value="1.5"/>
+                                <label class="star-half" for="rate2-star1-half" title="Very bad">1.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star1" type="radio" name="rate2" value="1"/>
+                                <label for="rate2-star1" title="Awful">1</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star0-half" type="radio" name="rate2" value="0.5"/>
+                                <label class="star-half" for="rate2-star0-half" title="Horrific">0.5</label>
+                              </fieldset>
+                        </span>
+            <span class="rating-separator">|</span>
+            <span class="total-ratings">
+                                     <span style="font-size: 32px">4.5</span>/5
+                                     <span class="mdl-list__item-primary-content ">
+                                             <i style="margin-top:16px; font-size: 48px; color:#46B6AC"
+                                                class="material-icons mdl-list__item-icon list-icon">star</i>
+                                     </span>
+                                </span>
+
         </div>
         <div class="content">
             <p>{{movieDetailCtrl.movie.plot}}</p>

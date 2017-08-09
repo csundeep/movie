@@ -32,10 +32,6 @@ body {
     float: left;
 }
 
-.movie-ratings {
-    float: right;
-}
-
 .content {
     clear: both;
 }
@@ -123,4 +119,16 @@ body {
 .login-message {
     margin-top: 16px;
     font-family: "Comic Sans MS";
+}
+
+.movie-ratings {
+}
+
+.rating-separator {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.total-ratings {
+    margin-right: 16px;
 }
