@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.movieflix.data.SearchType;
 import com.movieflix.data.SortType;
+import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 import com.movieflix.repositories.MovieRepository;
 
@@ -21,6 +22,11 @@ public class MovieRepositoryImpl implements MovieRepository {
 
 	public List<Movie> findAll() {
 		TypedQuery<Movie> query = entityManager.createNamedQuery("Movie.findAll", Movie.class);
+		return query.getResultList();
+	}
+
+	public List<Genre> getGenres() {
+		TypedQuery<Genre> query = entityManager.createNamedQuery("Genre.findAll", Genre.class);
 		return query.getResultList();
 	}
 
@@ -39,11 +45,12 @@ public class MovieRepositoryImpl implements MovieRepository {
 	}
 
 	public Movie create(Movie movie) {
-		entityManager.persist(movie);
+		entityManager.merge(movie);
 		return movie;
 	}
 
 	public Movie update(Movie emp) {
+		System.out.println(emp.toString());
 		return entityManager.merge(emp);
 	}
 
@@ -54,43 +61,46 @@ public class MovieRepositoryImpl implements MovieRepository {
 	public List<Movie> findBySearchData(String searchCatogoryType, String searchCatogoryValue, String sortType) {
 		TypedQuery<Movie> query = null;
 
-		if (searchCatogoryType.equals(SearchType.movie_type)) {
-			if (sortType.equals(SortType.YEAR))
+		System.out.println(searchCatogoryType + "   " + searchCatogoryValue + " " + SearchType.movie_type + " "
+				+ searchCatogoryType.equals(SearchType.movie_type.name()));
+
+		if (searchCatogoryType.equals(SearchType.movie_type.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
 				query = entityManager.createNamedQuery("Movie.findByMovieTypeAndSortByYear", Movie.class);
-			else if (sortType.equals(SortType.IMDB_RATINGS))
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
 				query = entityManager.createNamedQuery("Movie.findByMovieTypeAndSortByIMDBRating", Movie.class);
-			else if (sortType.equals(SortType.IMDB_VOTES))
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
 				query = entityManager.createNamedQuery("Movie.findByMovieTypeAndSortByIMDBVotes", Movie.class);
 			else
 				query = entityManager.createNamedQuery("Movie.findByMovieType", Movie.class);
 			query.setParameter("movieType", searchCatogoryValue);
-		} else if (searchCatogoryType.equals(SearchType.year)) {
-			if (sortType.equals(SortType.YEAR))
+		} else if (searchCatogoryType.equals(SearchType.year.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
 				query = entityManager.createNamedQuery("Movie.findByYearAndSortByYear", Movie.class);
-			else if (sortType.equals(SortType.IMDB_RATINGS))
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
 				query = entityManager.createNamedQuery("Movie.findByYearAndSortByIMDBRating", Movie.class);
-			else if (sortType.equals(SortType.IMDB_VOTES))
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
 				query = entityManager.createNamedQuery("Movie.findByYearAndSortByIMDBVotes", Movie.class);
 			else
 				query = entityManager.createNamedQuery("Movie.findByYear", Movie.class);
-			query.setParameter("year", Integer.parseInt(searchCatogoryValue));
-		} else if (searchCatogoryType.equals(SearchType.genre)) {
-			if (sortType.equals(SortType.YEAR))
+			query.setParameter("year", searchCatogoryValue);
+		} else if (searchCatogoryType.equals(SearchType.genre.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
 				query = entityManager.createNamedQuery("Movie.findByGenreAndSortByYear", Movie.class);
-			else if (sortType.equals(SortType.IMDB_RATINGS))
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
 				query = entityManager.createNamedQuery("Movie.findByGenreAndSortByIMDBRating", Movie.class);
-			else if (sortType.equals(SortType.IMDB_VOTES))
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
 				query = entityManager.createNamedQuery("Movie.findByGenreAndSortByIMDBVotes", Movie.class);
 			else
 				query = entityManager.createNamedQuery("Movie.findByGenre", Movie.class);
 			query.setParameter("genre", searchCatogoryValue);
 		} else {
 
-			if (sortType.equals(SortType.YEAR))
+			if (sortType.equals(SortType.YEAR.name()))
 				query = entityManager.createNamedQuery("Movie.findAllMoviesAndSortByYear", Movie.class);
-			else if (sortType.equals(SortType.IMDB_RATINGS))
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
 				query = entityManager.createNamedQuery("Movie.findAllMoviesAndSortByIMDBRating", Movie.class);
-			else if (sortType.equals(SortType.IMDB_VOTES))
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
 				query = entityManager.createNamedQuery("Movie.findAllMoviesAndSortByIMDBVotes", Movie.class);
 			else
 				query = entityManager.createNamedQuery("Movie.findAll", Movie.class);

@@ -8,7 +8,7 @@ public interface RatingRepository {
 
 	Rating findById(Long id);
 
-	List<Rating> findByUserIdMovieId(Long userId, Long movieId);
+	Rating findByUserIdMovieId(Long userId, Long movieId);
 
 	Rating create(Rating rating);
 

@@ -18,4 +18,6 @@ public interface RatingService {
 
 	double findAverageRatingForAMovie(Long movieId);
 
+	Rating findByMovieIdAndUserId(Long movieId, Long userId);
+
 }

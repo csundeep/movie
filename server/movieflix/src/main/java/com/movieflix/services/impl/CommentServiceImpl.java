@@ -1,5 +1,6 @@
 package com.movieflix.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class CommentServiceImpl implements CommentService {
 		User user = userService.findById(userId);
 		comment.setUser(user);
 		comment.setMovie(movie);
+		comment.setCreatedAt(new Date());
 		return repository.create(comment);
 	}
 

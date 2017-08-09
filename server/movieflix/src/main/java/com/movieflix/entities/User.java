@@ -22,6 +22,8 @@ public class User {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
+	@Column(name = "user_name", unique = true)
+	private String userName;
 	@Column(unique = true)
 	private String email;
 	@Column
@@ -51,6 +53,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmail() {

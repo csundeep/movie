@@ -3,6 +3,7 @@ package com.movieflix.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.movieflix.entities.Comment;
 import com.movieflix.services.CommentService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "comments")
 public class CommentController {
 

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,10 +40,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "Movie.findAllMoviesAndSortByIMDBRating", query = "SELECT m FROM Movie m ORDER BY m.imdbRating DESC"),
 		@NamedQuery(name = "Movie.findAllMoviesAndSortByIMDBVotes", query = "SELECT m FROM Movie m ORDER BY m.imdbVotes DESC") })
 public class Movie {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 	@Column(unique = true)
 	private String title;
 	@Column
@@ -63,29 +63,28 @@ public class Movie {
 	private String moviePoster;
 	@Column(name = "movie_type")
 	private String movieType;
-
+	@Column
+	private String director;
 	@Column(name = "imdb_url", unique = true)
 	private String imdbURL;
-	@Column(name = "movie_rating")
+	@Column(name = "imdb_rating")
 	private double imdbRating;
-	@Column(name = "meta_socre")
-	private int metascore;
+	@Column(name = "meta_score")
+	private int metaScore;
 	@Column(name = "imdb_votes")
 	private int imdbVotes;
-	@Column
-	private String awards;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Genre> genre;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Cast> casts;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -168,6 +167,20 @@ public class Movie {
 	public void setMovieType(String movieType) {
 		this.movieType = movieType;
 	}
+	
+	
+
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public int getMetaScore() {
+		return metaScore;
+	}
 
 	public String getImdbURL() {
 		return imdbURL;
@@ -186,11 +199,11 @@ public class Movie {
 	}
 
 	public int getMetascore() {
-		return metascore;
+		return metaScore;
 	}
 
-	public void setMetascore(int metascore) {
-		this.metascore = metascore;
+	public void setMetaScore(int metaScore) {
+		this.metaScore = metaScore;
 	}
 
 	public int getImdbVotes() {
@@ -199,14 +212,6 @@ public class Movie {
 
 	public void setImdbVotes(int imdbVotes) {
 		this.imdbVotes = imdbVotes;
-	}
-
-	public String getAwards() {
-		return awards;
-	}
-
-	public void setAwards(String awards) {
-		this.awards = awards;
 	}
 
 	public Set<Genre> getGenre() {
@@ -224,5 +229,15 @@ public class Movie {
 	public void setCasts(Set<Cast> casts) {
 		this.casts = casts;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", releaseDate=" + releaseDate + ", year="
+				+ year + ", rating=" + rating + ", movieDuration=" + movieDuration + ", language=" + language
+				+ ", country=" + country + ", moviePoster=" + moviePoster + ", movieType=" + movieType + ", director="
+				+ director + ", imdbURL=" + imdbURL + ", imdbRating=" + imdbRating + ", metaScore=" + metaScore
+				+ ", imdbVotes=" + imdbVotes + ", genre=" + genre + ", casts=" + casts + "]";
+	}
+
 
 }

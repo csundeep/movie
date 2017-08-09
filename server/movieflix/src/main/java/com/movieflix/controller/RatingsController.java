@@ -3,6 +3,7 @@ package com.movieflix.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.movieflix.entities.Rating;
 import com.movieflix.services.RatingService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "ratings")
 public class RatingsController {
@@ -25,8 +27,13 @@ public class RatingsController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "average")
-	public double findAverageRatingForAMovie(Long movieId) {
+	public double findAverageRatingForAMovie(@RequestParam("movie_id") Long movieId) {
 		return service.findAverageRatingForAMovie(movieId);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "{movie_id}/{user_id}")
+	public Rating findByMovieIdAndUserId(@PathVariable("movie_id") Long movieId, @PathVariable("user_id") Long userId) {
+		return service.findByMovieIdAndUserId(movieId, userId);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "{id}")

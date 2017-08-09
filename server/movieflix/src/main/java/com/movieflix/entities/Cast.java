@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Cast {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private int id;
 	private String role;
 	private String name;
 
@@ -31,12 +31,17 @@ public class Cast {
 		this.name = name;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Cast [id=" + id + ", role=" + role + ", name=" + name + "]";
 	}
 
 }

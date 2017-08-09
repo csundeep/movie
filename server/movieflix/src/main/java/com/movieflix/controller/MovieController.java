@@ -3,6 +3,7 @@ package com.movieflix.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 import com.movieflix.services.MovieService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "movies")
 public class MovieController {
@@ -23,6 +26,11 @@ public class MovieController {
 	@RequestMapping(method = RequestMethod.GET, path = "{id}")
 	public Movie findById(@PathVariable("id") Long id) {
 		return service.findById(id);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "genres")
+	public List<Genre> getGenres() {
+		return service.getGenres();
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

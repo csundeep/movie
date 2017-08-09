@@ -2,6 +2,7 @@ package com.movieflix.repositories;
 
 import java.util.List;
 
+import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 
 public interface MovieRepository {
@@ -19,5 +20,7 @@ public interface MovieRepository {
 	void delete(Movie movieInDB);
 
 	List<Movie> findBySearchData(String searchCatogoryType, String searchCatogoryValue, String sortType);
+
+	List<Genre> getGenres();
 
 }

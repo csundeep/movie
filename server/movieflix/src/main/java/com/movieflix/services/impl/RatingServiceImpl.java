@@ -35,8 +35,8 @@ public class RatingServiceImpl implements RatingService {
 
 	@Transactional
 	public Rating create(Rating rating, Long movieId, Long userId) {
-		List<Rating> ratingInDB = repository.findByUserIdMovieId(userId, movieId);
-		if (ratingInDB.size() != 0) {
+		Rating ratingInDB = repository.findByUserIdMovieId(userId, movieId);
+		if (ratingInDB != null) {
 			throw new RatingAlreadyExistsException(
 					"Rating already created with movie " + movieId + " and for the user " + userId);
 		}
@@ -71,6 +71,12 @@ public class RatingServiceImpl implements RatingService {
 
 	public double findAverageRatingForAMovie(Long movieId) {
 		return repository.findAverageRatingForAMovie(movieId);
+	}
+
+	@Override
+	public Rating findByMovieIdAndUserId(Long movieId, Long userId) {
+
+		return repository.findByUserIdMovieId(movieId, userId);
 	}
 
 }

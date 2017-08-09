@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 import com.movieflix.exceptions.MovieAlreadyExistsException;
 import com.movieflix.exceptions.MovieNotFoundException;
@@ -60,6 +61,11 @@ public class MovieServiceImpl implements MovieService {
 
 	public List<Movie> findBySearchData(String searchCatogoryType, String searchCatogoryValue, String sortType) {
 		return repository.findBySearchData(searchCatogoryType, searchCatogoryValue, sortType);
+	}
+
+	@Override
+	public List<Genre> getGenres() {
+		return repository.getGenres();
 	}
 
 }

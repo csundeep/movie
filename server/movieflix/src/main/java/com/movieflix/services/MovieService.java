@@ -2,6 +2,7 @@ package com.movieflix.services;
 
 import java.util.List;
 
+import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 
 public interface MovieService {
@@ -15,5 +16,7 @@ public interface MovieService {
 	void delete(Long id);
 
 	public List<Movie> findBySearchData(String searchCatogoryType, String searchCatogoryValue, String sortType);
+
+	List<Genre> getGenres();
 
 }

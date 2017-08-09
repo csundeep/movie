@@ -1,5 +1,7 @@
 package com.movieflix.entities;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private User user;
@@ -31,11 +33,14 @@ public class Comment {
 	@Column(name = "user_comment")
 	private String userComment;
 
-	public String getId() {
+	@Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private Date createdAt;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -61,6 +66,20 @@ public class Comment {
 
 	public void setUserComment(String userComment) {
 		this.userComment = userComment;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", user=" + user + ", movie=" + movie + ", userComment=" + userComment
+				+ ", createdAt=" + createdAt + "]";
 	}
 
 }

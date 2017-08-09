@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Rating {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Movie movie;
@@ -29,13 +29,13 @@ public class Rating {
 	private User user;
 
 	@Column(name = "total_rating")
-	private int totalRating;
+	private float totalRating;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -55,12 +55,17 @@ public class Rating {
 		this.user = user;
 	}
 
-	public int getTotalRating() {
+	public float getTotalRating() {
 		return totalRating;
 	}
 
-	public void setTotalRating(int totalRating) {
+	public void setTotalRating(float totalRating) {
 		this.totalRating = totalRating;
+	}
+
+	@Override
+	public String toString() {
+		return "Rating [id=" + id + ", movie=" + movie + ", user=" + user + ", totalRating=" + totalRating + "]";
 	}
 
 }

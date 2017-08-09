@@ -17,11 +17,15 @@ public class RatingRepositoryImpl implements RatingRepository {
 	private EntityManager entityManager;
 
 	@Override
-	public List<Rating> findByUserIdMovieId(Long userId, Long movieId) {
+	public Rating findByUserIdMovieId(Long movieId, Long userId) {
 		TypedQuery<Rating> query = entityManager.createNamedQuery("Rating.findByUserIdAndMovieId", Rating.class);
 		query.setParameter("userId", userId);
 		query.setParameter("movieId", movieId);
-		return query.getResultList();
+		List<Rating> ratings = query.getResultList();
+		if (ratings != null && ratings.size() > 0)
+			return ratings.get(0);
+		else
+			return null;
 	}
 
 	@Override
@@ -31,8 +35,7 @@ public class RatingRepositoryImpl implements RatingRepository {
 
 	@Override
 	public Rating create(Rating emp) {
-		entityManager.persist(emp);
-		return emp;
+		return entityManager.merge(emp);
 	}
 
 	@Override
@@ -62,4 +65,5 @@ public class RatingRepositoryImpl implements RatingRepository {
 		}
 		return avg;
 	}
+
 }
