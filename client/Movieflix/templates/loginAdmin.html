@@ -1,0 +1,41 @@
+<div class="mdl-grid login-form">
+    <div class="mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+        <div class="mdl-card__title mdl-color--brown-800">
+            <h2 class="mdl-card__title-text mdl-color-text--white">Admin Login</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-grid">
+
+            <form method="POST" ng-submit="userCtrl.validateAdmin()" novalidate>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[A-Za-z\s]*"
+                           ng-model="userName" ng-required="true"/>
+                    <label class="mdl-textfield__label" for="userName">User Name</label>
+                    <span class="mdl-tooltip mdl-tooltip--validation" for="userName"
+                          ng-show="loginForm.userName.$invalid && form.userName.$touched">
+                                <span ng-show="loginForm.userName.$error.required">Required.</span>
+                                 <span ng-show="loginForm.userName.$error.pattern">Invalid pattern.</span>
+                            </span>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <input ng-model="password" class="mdl-textfield__input"
+                           type="password" id="textfield_password"
+                           name="password" ng-required="true"/>
+                    <label class="mdl-textfield__label mdl-color-text--grey"
+                           for="textfield_password">Password</label>
+                </div>
+                <span style="color: red">{{userCtrl.errorMessage}}</span>
+                <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+
+                    <button ng-disabled="loginForm.$invalid"
+                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+                        Log In
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="login-form " ng-class="render.mdlColor? render.mdlColor : 'mdl-color--grey-100'">
+    <div class="mdl-tabs mdl-js-tabs">
+        <div class=" mdl-tabs__tab-bar">
+            <a href="#tab1-panel" class="mdl-tabs__tab is-active">Login</a>
+            <a href="#tab2-panel" class="mdl-tabs__tab">Registration</a>
+        </div>
+        <div class="login-tabs mdl-tabs__panel is-active" id="tab1-panel">
+            <div class="mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+                <div class="mdl-card__supporting-text mdl-grid">
+                    <form method="POST" name="loginForm"
+                          ng-submit="userCtrl.validateUser()" novalidate>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <input class="mdl-textfield__input" type="text" id="userName" name="userName" pattern="[A-Za-z\s]*"
+                                   ng-model="userName" ng-required="true"/>
+                            <label class="mdl-textfield__label" for="userName">User Name</label>
+                            <span class="mdl-tooltip mdl-tooltip--validation" for="userName"
+                                  ng-show="loginForm.userName.$invalid && form.userName.$touched">
+                                <span ng-show="loginForm.userName.$error.required">Required.</span>
+                                 <span ng-show="loginForm.userName.$error.pattern">Invalid pattern.</span>
+                            </span>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <input ng-model="password" class="mdl-textfield__input"
+                                   type="password" id="textfield_password"
+                                   name="password" ng-required="true"/>
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_password">Password</label>
+                        </div>
+                        <span style="color: red">{{userCtrl.errorMessage}}</span>
+                        <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+
+                            <button ng-disabled="loginForm.$invalid"
+                                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+                                Log In
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="mdl-tabs__panel" id="tab2-panel">
+            <div class="mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+                <div class="mdl-card__supporting-text mdl-grid">
+                    <form name="registrationForm" method="POST"
+                          ng-submit="userCtrl.addUser()" novalidate>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_first_name">First Name</label>
+                            <input ng-model="userCtrl.user.firstName" class="mdl-textfield__input" type="text"
+                                   id="textfield_first_name"
+                                   name="first_name" required/>
+                            <span class="mdl-tooltip mdl-tooltip--validation" for="companyName"
+                                  ng-show="registrationForm.first_name.$invalid && registrationForm.first_name.$touched">
+                                            <span ng-show="registrationForm.first_name.$error.required">Required.</span>
+                                    </span>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_last_name">Last Name</label>
+                            <input ng-model="userCtrl.user.lastName" class="mdl-textfield__input" type="text"
+                                   id="textfield_last_name"
+                                   name="last_name" required/>
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_new_username">Username</label>
+                            <input ng-model="userCtrl.user.userName" class="mdl-textfield__input" type="text"
+                                   id="textfield_new_username"
+                                   name="username" required/>
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_email">Email</label>
+                            <input ng-model="userCtrl.user.email" class="mdl-textfield__input" type="email"
+                                   id="textfield_email"
+                                   name="email"
+                                   required/>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_new_password">Password</label>
+                            <input ng-model="userCtrl.user.password" class="mdl-textfield__input"
+                                   type="password"
+                                   id="textfield_new_password"
+                                   name="password"
+                                   required/>
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_password_confirm">Password Confirm</label>
+                            <input ng-model="userCtrl.user.confirmPassword" class="mdl-textfield__input"
+                                   type="password" id="textfield_password_confirm"
+                                   name="password_confirm" required/>
+                        </div>
+
+
+                        <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+                            <button ng-disabled="registrationForm.$invalid"
+                                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored"
+                            >
+                                Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

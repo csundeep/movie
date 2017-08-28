@@ -1,0 +1,206 @@
+<style>
+    .row {
+        text-align: center;
+    }
+
+    .rate {
+        display: inline-block;
+        margin-top: 16px;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        float: right;
+        font-size: 0;
+        color: #d9d9d9;
+    }
+
+    label:before {
+        content: "\f005";
+        font-family: FontAwesome;
+        font-size: 28px;
+    }
+
+    label:hover,
+    label:hover ~ label {
+        color: #fcd000;
+        transition: 0.2s;
+    }
+
+    input:checked ~ label {
+        color: #ccac00;
+    }
+
+    input:checked ~ label:hover,
+    input:checked ~ label:hover ~ label {
+        color: #fcd000;
+        transition: 0.2s;
+    }
+
+    .star-half {
+        position: relative;
+    }
+
+    .star-half:before {
+        position: absolute;
+        content: "\f089";
+        padding-right: 0;
+    }
+
+</style>
+<div class="movie-content">
+    <div class="movie-image">
+        <img width="200" height="300" src="{{movieDetailCtrl.movie.moviePoster}}">
+    </div>
+    <div class="movie-info">
+        <div class="movie-title">
+            <h3>{{movieDetailCtrl.movie.title}} ({{movieDetailCtrl.movie.year}})</h3>
+            <div class="sub-text">
+                <span>{{movieDetailCtrl.movie.movieDuration}}</span>
+                <span class="separator">|</span>
+                <span ng-repeat="genre in movieDetailCtrl.movie.genre">{{genre.genereType}} </span>
+                <span class="separator">|</span>
+                <span>{{movieDetailCtrl.movie.releaseDate}}</span>
+            </div>
+        </div>
+        <div class="movie-ratings">
+                     <span class="your-rating">
+                              <fieldset class="rate">
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star5" type="radio" name="rate2" value="5"/>
+                                <label for="rate2-star5" title="Awesome">5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star5-half" type="radio" name="rate2" value="4.5"/>
+                                <label class="star-half" for="rate2-star5-half" title="Excellent">4.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star4" type="radio" name="rate2" value="4"/>
+                                <label for="rate2-star4" title="Very good">4</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star3-half" type="radio" name="rate2" value="3.5"/>
+                                <label class="star-half" for="rate2-star3-half" title="Good">3.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star3" type="radio" name="rate2" value="3"/>
+                                <label for="rate2-star3" title="Satisfactory">3</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star2-half" type="radio" name="rate2" value="2.5"/>
+                                <label class="star-half" for="rate2-star2-half" title="Unsatisfactory">2.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star2" type="radio" name="rate2" value="2"/>
+                                <label for="rate2-star2" title="Bad">2</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star1-half" type="radio" name="rate2" value="1.5"/>
+                                <label class="star-half" for="rate2-star1-half" title="Very bad">1.5</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star1" type="radio" name="rate2" value="1"/>
+                                <label for="rate2-star1" title="Awful">1</label>
+
+                                <input ng-model="movieDetailCtrl.rating.totalRating"
+                                       ng-change="movieDetailCtrl.giveRating()"
+                                       id="rate2-star0-half" type="radio" name="rate2" value="0.5"/>
+                                <label class="star-half" for="rate2-star0-half" title="Horrific">0.5</label>
+                              </fieldset>
+                        </span>
+            <span class="rating-separator">|</span>
+            <span class="total-ratings">
+                                     <span style="font-size: 32px">4.5</span>/5
+                                     <span class="mdl-list__item-primary-content ">
+                                             <i style="margin-top:16px; font-size: 48px; color:#46B6AC"
+                                                class="material-icons mdl-list__item-icon list-icon">star</i>
+                                     </span>
+                                </span>
+
+        </div>
+        <div class="content">
+            <p>{{movieDetailCtrl.movie.plot}}</p>
+            <div>
+                <a href="{{movieDetailCtrl.movie.imdbURL}}">
+                <span class="imdb-rating">
+                            {{movieDetailCtrl.movie.imdbRating}}/10
+                            <img class="imdb-img"
+                                 src="images/imdb.png"/>
+
+                        </span>
+                </a>
+                <span class="meta-score">
+                            <span>{{movieDetailCtrl.movie.metascore}}</span>
+                        </span>
+                metascore
+            </div>
+            <div class="movie-director">
+                <span class="director-heading"><strong>Director: </strong></span>
+                <span> {{movieDetailCtrl.movie.director}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="movie-cast">
+    <h4>Cast</h4>
+    <div class="cast-list mdl-card__actions mdl-card--border">
+        <div class="demo-list-action mdl-list" ng-repeat="cast in movieDetailCtrl.movie.casts">
+            <div class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons mdl-list__item-avatar">person</i>
+                          <span>{{cast.name}}</span>
+                        </span>
+                <span class="mdl-list__item-secondary-action" href="#">{{cast.role}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="comment-section mdl-card__actions mdl-card--border">
+        <h4>User Comments</h4>
+        <div class="user-comment">
+            <ul class="user-comment-list mdl-list " ng-repeat="comment in movieDetailCtrl.comments">
+                <li class="mdl-list__item mdl-list__item--two-line mdl-card__actions mdl-card--border">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons mdl-list__item-avatar">person</i>
+                          <span>{{comment.user.userName}}</span>
+                          <span class="mdl-list__item-sub-title">{{comment.userComment}}</span>
+                        </span>
+                    <span class="mdl-list__item-secondary-content">
+                          <span class="mdl-list__item-secondary-info">{{comment.createdAt | date:'EEE, d MMM yyyy hh:mm a'}}</span>
+
+                        </span>
+                </li>
+
+            </ul>
+            <div class="current-user_comment-box">
+                <form ng-submit="movieDetailCtrl.postComment()">
+                    <span class="comment-box">
+                        <textarea ng-model="movieDetailCtrl.newComment" class="comment mdl-textfield__input" rows="4"
+                                  name="plot" id="plot"
+                                  placeholder="Enter your Comment here"></textarea>
+                    </span>
+                    <span>
+
+                        <p ng-show="!uName" class="login-message"><a href="#/login" style="color: #009688">Login</a> to comment on this movie</p>
+                    <button type="submit" ng-disabled="!uName"
+                            class="comment-button mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+                        Comment
+                    </button>
+                        </span>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<form action="#/addMovie">
+    <button ng-show="role == 'admin'" id="add" type="submit"
+            class="add-movie-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp">
+        <i class="material-icons">add</i>
+    </button>
+</form>
+<div class="mdl-tooltip" for="add">
+    Add new Movie
+</div>
+
+
+<div class="sort-by-button-section">
+    <div class="search_bar">
+        <form ng-submit="homeCtrl.search()">
+            <div class="mdl-textfield mdl-js-textfield search_box_main">
+                <input ng-model="homeCtrl.search.value" class="mdl-textfield__input search_box" type="text"
+                       id="searchValue">
+                <label class="mdl-textfield__label" for="searchValue">Search movies by type, year, genre</label>
+            </div>
+
+            <select class="mdl-select__input select_box" ng-model="homeCtrl.search.type" name="type">
+                <option value="ALL">All</option>
+                <option value="movie_type">Type</option>
+                <option value="year">Year</option>
+                <option value="genre">Genre</option>
+            </select>
+            <div class="sort-by-button">
+                Sort By
+                <select ng-model="homeCtrl.search.sort" name="sort" ng-change="homeCtrl.search()">
+                    <option value="ALL">All</option>
+                    <option value="IMDB_RATINGS">IMDb Rating</option>
+                    <option value="IMDB_VOTES">IMDb Votes</option>
+                    <option value="YEAR">Year</option>
+                </select>
+            </div>
+
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">search</i>
+            </button>
+        </form>
+    </div>
+
+</div>
+
+
+<div ng-repeat="movie in homeCtrl.movies">
+    <div class="movie-card">
+        <a href="#/cardDetail/{{movie.id}}">
+
+            <div class="demo-card-square mdl-card mdl-shadow--4dp mdl-card--border">
+                <div class="movie-card-title mdl-card__title mdl-card--expand"
+                     style=" background: url('{{movie.moviePoster}}'); background-size:cover; background-repeat:no-repeat; background-position: center center;">
+                    <h2 class="mdl-card__title-text">{{movie.title}} ({{movie.year}})</h2>
+                </div>
+                <div class="mdl-card__supporting-text movie-details">
+                    <ul class="movie-list mdl-list">
+                        <li class="mdl-list__item movie-item">
+                            <span class="mdl-list__item-primary-content ">
+                                 <i class="material-icons mdl-list__item-icon list-icon">watch_later</i>
+                                    {{movie.movieDuration}}
+                            </span>
+                        </li>
+                        <li class="mdl-list__item  movie-item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon list-icon">camera</i>
+                               {{movie.movieType}}
+                            </span>
+                        </li>
+                        <li class="mdl-list__item movie-item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon list-icon">movie</i>
+                               <span ng-repeat="genre in movie.genre">
+                                {{genre.genereType}},
+                               </span>
+                            </span>
+                        </li>
+                    </ul>
+                    <p>
+                        <span class="rating-star material-icons mdl-list__item-icon">star</span>
+                        <span class="rating-star material-icons mdl-list__item-icon">star</span>
+                        <span class="rating-star material-icons mdl-list__item-icon">star</span>
+                        <span class="rating-star material-icons mdl-list__item-icon">star</span>
+                        <span class="rating-star material-icons mdl-list__item-icon">star_half</span>
+
+                    </p>
+                </div>
+                <div ng-show="role == 'admin'" class="mdl-card__actions mdl-card--border">
+                    <span>
+                    <a id="edit" href="#/editMovie/{{movie.id}}"
+                       class="mdl-button mdl-js-button mdl-js-ripple-effect  mdl-button--icon">
+                        <i class="material-icons">edit</i>
+                    </a>
+                        </span>
+                    <span>
+                    <button id="delete"
+                            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons">delete</i>
+                    </button>
+                        </span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
