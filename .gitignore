@@ -13,5 +13,8 @@
 
 **/target/*
 
-**client/.project
-**server/.project
+client/Movieflix/.project
+server/movieflix/.classpath
+server/movieflix/.gitignore
+server/movieflix/.project
+
