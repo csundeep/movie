@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.movieflix.data.SearchType;
+import com.movieflix.data.SortType;
 import com.movieflix.entities.Genre;
 import com.movieflix.entities.Movie;
 import com.movieflix.exceptions.MovieAlreadyExistsException;
@@ -60,7 +62,49 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	public List<Movie> findBySearchData(String searchCatogoryType, String searchCatogoryValue, String sortType) {
-		return repository.findBySearchData(searchCatogoryType, searchCatogoryValue, sortType);
+
+		System.out.println(searchCatogoryType + "   " + searchCatogoryValue + " " + SearchType.movie_type + " "
+				+ searchCatogoryType.equals(SearchType.movie_type.name()));
+
+		if (searchCatogoryType.equals(SearchType.movie_type.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
+				return repository.findByMovieTypeAndSortByYear(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
+				return repository.findByMovieTypeAndSortByIMDBRating(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
+				return repository.findByMovieTypeAndSortByIMDBVotes(searchCatogoryValue);
+			else
+				return repository.findByMovieType(searchCatogoryValue);
+		} else if (searchCatogoryType.equals(SearchType.year.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
+				return repository.findByYearAndSortByYear(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
+				return repository.findByYearAndSortByIMDBRating(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
+				return repository.findByYearAndSortByIMDBVotes(searchCatogoryValue);
+			else
+				return repository.findByYear(searchCatogoryValue);
+		} else if (searchCatogoryType.equals(SearchType.genre.name())) {
+			if (sortType.equals(SortType.YEAR.name()))
+				return repository.findByGenreAndSortByYear(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
+				return repository.findByGenreAndSortByIMDBRating(searchCatogoryValue);
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
+				return repository.findByGenreAndSortByIMDBVotes(searchCatogoryValue);
+			else
+				return repository.findByGenreType(searchCatogoryValue);
+		} else {
+
+			if (sortType.equals(SortType.YEAR.name()))
+				return repository.findAllMoviesAndSortByYear();
+			else if (sortType.equals(SortType.IMDB_RATINGS.name()))
+				return repository.findAllMoviesAndSortByIMDBRating();
+			else if (sortType.equals(SortType.IMDB_VOTES.name()))
+				return repository.findAllMoviesAndSortByIMDBVotes();
+			else
+				return repository.findAll();
+		}
+
 	}
 
 	@Override
