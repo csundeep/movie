@@ -12,3 +12,6 @@
 **/RemoteSystemsTempFiles
 
 **/target/*
+
+**client/.project
+**server/.project
