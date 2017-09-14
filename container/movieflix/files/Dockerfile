@@ -2,7 +2,7 @@ FROM java:8
 
 MAINTAINER SANDY
 
-EXPOSE 8888
+EXPOSE 9000
 
 ADD Movieflix-0.0.1-SNAPSHOT.jar /Movieflix-0.0.1-SNAPSHOT.jar
 RUN chmod +x /Movieflix-0.0.1-SNAPSHOT.jar
