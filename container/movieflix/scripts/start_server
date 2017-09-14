@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /opt/
+docker build -t  movieflix .
+docker run -d --name movieflix -p 9000:9000 movieflix
