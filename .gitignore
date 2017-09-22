@@ -18,3 +18,9 @@ server/movieflix/.classpath
 server/movieflix/.gitignore
 server/movieflix/.project
 
+.project
+container/movieflix/files/Movieflix-*
+container/movieflix/.gitignore
+container/movieflix/dependency-reduced-pom.xml
+
+
