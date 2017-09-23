@@ -5,6 +5,5 @@ phases:
       - mvn clean install
 artifacts:
   files:
-    - container/movieflix/appspec.yml
-    - container/movieflix/files/*
-    - container/movieflix/scripts/*
+    - container/movieflix/*
+  discard-paths: yes
