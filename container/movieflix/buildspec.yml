@@ -4,7 +4,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login --no-include-email --region us-west-2
+      - $(aws ecr get-login --no-include-email --region us-west-2)
   build:
     commands:
       - mvn clean install
@@ -12,5 +12,9 @@ phases:
 artifacts:
   files:
     - appspec.yml
-    - files/*
-    - scripts/*
+    - Dockerfile
+    - removeFiles
+    - start_server
+    - stop_server
+    - start_up.sh
+    - Movieflix.jar

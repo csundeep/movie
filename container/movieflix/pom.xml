@@ -32,7 +32,8 @@
 				<configuration>
 					<executable>true</executable>
 					<mainClass>com.movieflix.Application</mainClass>
-					<outputDirectory>files</outputDirectory>
+					<outputDirectory>${project.basedir}</outputDirectory>
+					<finalName>movieflix</finalName>
 				</configuration>
 				<executions>
 					<execution>
