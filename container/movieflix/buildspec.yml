@@ -3,7 +3,8 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region us-west-2)
+      - aws dynamodb list-tables
+      - aws ecr get-login --no-include-email --region us-west-2
   build:
     commands:
       - mvn clean install
