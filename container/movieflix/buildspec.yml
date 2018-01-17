@@ -3,7 +3,6 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws dynamodb list-tables
       - aws --version
       - aws ecr get-login --no-include-email --region us-west-2
   build:
