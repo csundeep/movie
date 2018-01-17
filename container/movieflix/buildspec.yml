@@ -4,6 +4,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
+      - java --version
       - $(aws ecr get-login --region us-west-2)
   build:
     commands:
