@@ -1,10 +1,20 @@
 version: 0.2
 phases:
+  install:
+    commands:
+      - apt-get update -y
+      - apt-get install -y software-properties-common
+      - add-apt-repository ppa:openjdk-r/ppa
+      - apt-get update -y
+      - apt-get install -y openjdk-8-jdk
+      - apt-get install -y maven
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - sudo docker images
+      - java -version
+      - mvn --version
+      - docker --version
       - $(aws ecr get-login --no-include-email --region us-west-2)
   build:
     commands:
