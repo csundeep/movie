@@ -4,7 +4,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - systemctl start docker
+      - service docker status
+      - service docker start
       - sudo docker images
       - $(aws ecr get-login --no-include-email --region us-west-2)
   build:
